@@ -23,8 +23,8 @@ function Home(props) {
         <button className="btn btn-outline-info btn-lg px-5 py-4 m-5" id="btn1">Connect Now  <i className="bi bi-gear-wide-connected mx-3"></i></button>
       </div>
       <div className="home-banner mb-5 p-5"> 
-        <img src={notification} alt="notification" className="ms-auto float-end"/>
         <div className="home-banner-inner m-5 p-5">
+        <img src={notification} alt="notification" className="ms-auto float-end"/>
           <p className="home-banner-inner1 ">Easily report lost or found items with a user-friendly platform, including photos and detailed descriptions.</p>
         </div>
         <p className="home-banner-inner2 m-5 p-5">Simplified Reporting</p>
@@ -54,7 +54,7 @@ function Home(props) {
           </div>
         </div>
       </div>
-      <div className="home-banner-ipad  m-4 text-center">
+      <div className="home-banner-ipad text-center  m-4 ">
       <button className="btn btn-info btn-lg " id="btn3">CONNECT TO NETWORK  <i className="bi bi-gear-wide-connected mx-3"></i></button>
       </div>
       <div className="home-banner-inner text-center p-4 m-5">

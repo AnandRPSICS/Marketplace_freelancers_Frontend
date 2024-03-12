@@ -16,7 +16,9 @@ line-height: normal;
    }
 #btn3{
     color: #FFF;
-    margin: 7%;
+    margin-top: 20%;
+    height: 80px;
+    width: 400px;
    }   
 .home-inner{
 color: #56D6FF;
@@ -56,6 +58,9 @@ line-height: normal;
     padding: 5%;
     background-repeat: no-repeat;
     background-size:cover;
+    /* width: 1440px; */
+    height: 517.063px;
+    flex-shrink: 0;
 }
 
 .home-banner-inner{
@@ -156,8 +161,12 @@ line-height: normal;
     padding: 5%;
     background-repeat: no-repeat;
     background-size:cover;
-    height: 50vh;
+    /* height: 50vh; */
     background-attachment: fixed;
+    height: 520.181px;
+    flex-shrink: 0;
+    background-position: center;
+    
 }
 .home-banner-testimonial{
 color: #1A728E;

@@ -10,7 +10,7 @@ import Navbar from './Pages/Common/Navbar/navbar';
 import Footer from './Pages/Common/Footer/footer';
 function App() {
   return (
-    <div className='container-fluid bg-hero'>
+    <div className='container-xxl bg-hero m-auto '>
       <Navbar/>
       <BrowserRouter>
         <Routes>
