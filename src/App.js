@@ -8,9 +8,10 @@ import User_register from './Pages/User/register/user_register';
 import Home from './Pages/Common/Home/home';
 import Navbar from './Pages/Common/Navbar/navbar';
 import Footer from './Pages/Common/Footer/footer';
+import Forgot_password from './Pages/User/forgot_password/forgot_password';
 function App() {
   return (
-    <div className='container-xxl bg-hero m-auto '>
+    <div className='container-xxl bg-hero m-auto w-100'>
       <Navbar/>
       <BrowserRouter>
         <Routes>
@@ -20,6 +21,7 @@ function App() {
           <Route path='/freelancer-register' element={<Freelancer_register/>}/>
           <Route path='/user-login' element={<User_login/>}/>
           <Route path='/user-register' element={<User_register/>}/>
+          <Route path='/user-forgot-password' element={<Forgot_password/>}/>
         </Routes>
       </BrowserRouter>
      <Footer/>
