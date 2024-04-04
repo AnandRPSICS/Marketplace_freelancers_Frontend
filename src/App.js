@@ -11,8 +11,8 @@ import Footer from "./Pages/Common/Footer/footer";
 import Forgot_password from "./Pages/User/forgot_password/forgot_password";
 function App() {
   return (
-    <div className="container-xxl bg-hero m-auto w-100">
-      <Navbar />
+    <div className='container-fluid bg-hero m-auto w-100'>
+      <Navbar/>
       <BrowserRouter>
         <Routes>
           {/* user routes  */}
