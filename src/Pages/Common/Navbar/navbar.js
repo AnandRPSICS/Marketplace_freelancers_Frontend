@@ -1,7 +1,16 @@
 import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Navbar() {
+  const navigate = useNavigate();
+  const redirectUserLogin = () => {
+    navigate("/user-login");
+  };
+  const redirectFreelancerLogin = () => {
+    navigate("/freelancer-login");
+  };
+
   return (
     <div className="container-fluid bg-connect">
       <div className="connect justify-content-center">
@@ -10,9 +19,17 @@ function Navbar() {
       </div>
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav1"
+            aria-controls="navbarNav1"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
           <div
             className="collapse navbar-collapse justify-content-center"
             id="navbarNav1"
@@ -40,21 +57,21 @@ function Navbar() {
                   Login
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
+                  <li onClick={redirectUserLogin}>
                     <a className="dropdown-item" href="#">
                       User
                     </a>
                   </li>
-                  <li>
+                  <li onClick={redirectFreelancerLogin}>
                     <a className="dropdown-item" href="#">
                       Freelancer
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a className="dropdown-item" href="#">
                       Admin
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
             </ul>
