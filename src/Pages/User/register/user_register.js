@@ -12,10 +12,10 @@ function User_register() {
   });
   const handleChanges = (e) => {
     const { name, value } = e.target;
-    setUserData({
-      ...userData,
+    setUserData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
+    }));
   };
   console.log("user data", userData);
 

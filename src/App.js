@@ -12,7 +12,7 @@ import Forgot_password from "./Pages/User/forgot_password/forgot_password";
 function App() {
   return (
     <div className='container-fluid bg-hero m-auto w-100'>
-      <Navbar/>
+    
       <BrowserRouter>
         <Routes>
           {/* user routes  */}
@@ -31,7 +31,7 @@ function App() {
           <Route path="/*" element={<h1> Please re-check the Route </h1>} />
         </Routes>
       </BrowserRouter>
-      <Footer />
+     
     </div>
   );
 }
