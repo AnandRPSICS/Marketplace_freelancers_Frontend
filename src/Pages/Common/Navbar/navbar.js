@@ -58,14 +58,14 @@ function Navbar() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li onClick={redirectUserLogin}>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" >
                       User
                     </a>
                   </li>
                   <li onClick={redirectFreelancerLogin}>
-                    <a className="dropdown-item" href="#">
+                    <p className="dropdown-item">
                       Freelancer
-                    </a>
+                    </p>
                   </li>
                   {/* <li>
                     <a className="dropdown-item" href="#">

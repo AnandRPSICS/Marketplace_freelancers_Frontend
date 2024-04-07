@@ -1,9 +1,69 @@
 import React from "react";
-import "./freelancer_login.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { axiosInstance } from "../../../apis/axiosInstance";
+import { isEmailValid } from "../../../utils/validations/emailValidation";
+import "./freelancer_login.css";
+
 function Freelancer_login() {
   const navigate = useNavigate();
 
+  const [freelancerData, setFreelancerData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChanges = (e) => {
+    const { name, value } = e.target;
+    setFreelancerData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    let { email, password } = freelancerData;
+
+    if (!email || !password) {
+      alert("Please Fill All Details");
+      return;
+    }
+
+    if (!isEmailValid(email)) {
+      alert("Please Enter Valid Email");
+      return;
+    }
+
+    sendDataToServer();
+  };
+
+  const sendDataToServer = async () => {
+    try {
+      let res = await axiosInstance.post("/freelancerLogin", freelancerData);
+      if (res.status === 200) {
+        alert("Login Successfull");
+        setTimeout(() => {
+          // TODO
+          // Redirect here to freelancer home page
+          navigate("/");
+        }, 1500);
+      }
+    } catch (error) {
+      let responseStatus = error.response?.status || null;
+      if (responseStatus === 400 || responseStatus === 404) {
+        const responseMessage = error.response?.data?.message || null;
+        if (responseMessage) {
+          alert(responseMessage);
+        } else {
+          alert("Some Error Occured. Please try again after some time");
+        }
+      } else {
+        alert("Server Error Occured. Please try again after some time");
+      }
+      console.log("Error on freelancer login ", error);
+    }
+  };
   const redirectFreelancerRegister = () => {
     navigate("/freelancer-register");
   };
@@ -18,18 +78,22 @@ function Freelancer_login() {
                   <h2 className="text-center freelancer-login-heading mb-2">
                     Freelancer Login
                   </h2>
-                  <form>
+                  <form onSubmit={handleLogin}>
                     <div className="mb-3">
                       <label
                         htmlFor="exampleInputEmail1"
                         className="form-label user-login-label"
                       >
-                        Username
+                        Email
                       </label>
                       <input
                         type="email"
                         className="form-control"
+                        required
                         id="exampleInputEmail1"
+                        name="email"
+                        value={freelancerData.email}
+                        onChange={handleChanges}
                         aria-describedby="emailHelp"
                       />
                     </div>
@@ -42,7 +106,11 @@ function Freelancer_login() {
                       </label>
                       <input
                         type="password"
+                        required
                         className="form-control"
+                        name="password"
+                        value={freelancerData.password}
+                        onChange={handleChanges}
                         id="exampleInputPassword1"
                       />
                     </div>
@@ -54,32 +122,25 @@ function Freelancer_login() {
                           value=""
                           id="flexCheckChecked"
                         />
-                        <label
-                          className="form-check-label  user-login-label"
-                          htmlFor="flexCheckChecked"
-                        >
-                          {" "}
-                          Remember this Device{" "}
-                        </label>
                       </div>
                       <a className="user-login-label" href="">
                         {" "}
                         Forgot Password?
                       </a>
                     </div>
-                    <a
-                      href=""
+                    <button
+                      type="submit"
                       className="btn  w-100 py-8 fs-4 mb-4 rounded-2 user-login-button text-white"
                     >
                       Sign In
-                    </a>
+                    </button>
                     <div className="d-flex align-items-center justify-content-center">
                       <p
                         style={{ cursor: "pointer" }}
                         className="fs-5 mb-0 fw-bold"
                         onClick={redirectFreelancerRegister}
                       >
-                        Create an User account
+                        Create an freelancer account
                       </p>
                     </div>
                   </form>
