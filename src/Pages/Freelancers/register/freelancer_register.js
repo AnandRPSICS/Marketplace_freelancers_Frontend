@@ -11,14 +11,24 @@ function Freelancer_register() {
   
   const navigate = useNavigate();
   const [freelancerData, setFreelancerData] = useState({
-    name: "myname",
-    email: "freelancer@gmail.com",
-    password: "12341234",
-    contact: "1234567890",
-    qualification: "bcom",
-    jobrole: "designer",
+    name: "",
+    email: "",
+    password: "",
+    contact: "",
+    qualification: "",
+    jobrole: "",
     profilepic: null,
   });
+  // For Testing
+  // const [freelancerData, setFreelancerData] = useState({
+  //   name: "myname",
+  //   email: "freelancer@gmail.com",
+  //   password: "12341234",
+  //   contact: "1234567890",
+  //   qualification: "bcom",
+  //   jobrole: "designer",
+  //   profilepic: null,
+  // });
 
   const handleRegister = (e) => {
     e.preventDefault();

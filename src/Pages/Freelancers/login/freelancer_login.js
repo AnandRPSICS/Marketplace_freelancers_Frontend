@@ -21,7 +21,6 @@ function Freelancer_login() {
     }));
   };
 
-  console.log("name", freelancerData);
   const handleLogin = (e) => {
     e.preventDefault();
     let { email, password } = freelancerData;
@@ -40,25 +39,20 @@ function Freelancer_login() {
   };
 
   const sendDataToServer = async () => {
-    console.log("freelancerData", freelancerData);
     try {
       let res = await axiosInstance.post("/freelancerLogin", freelancerData);
-      console.log('login res', res)
       if (res.status === 200) {
         alert("Login Successfull");
         setTimeout(() => {
           // TODO
           // Redirect here to freelancer home page
-            navigate('/')
+          navigate("/");
         }, 1500);
       }
     } catch (error) {
       let responseStatus = error.response?.status || null;
-      // console.log('login error', error)
-      console.log('login error', responseStatus)
       if (responseStatus === 400 || responseStatus === 404) {
         const responseMessage = error.response?.data?.message || null;
-        console.log("response message", responseMessage);
         if (responseMessage) {
           alert(responseMessage);
         } else {
@@ -67,6 +61,7 @@ function Freelancer_login() {
       } else {
         alert("Server Error Occured. Please try again after some time");
       }
+      console.log("Error on freelancer login ", error);
     }
   };
   const redirectFreelancerRegister = () => {
@@ -94,6 +89,7 @@ function Freelancer_login() {
                       <input
                         type="email"
                         className="form-control"
+                        required
                         id="exampleInputEmail1"
                         name="email"
                         value={freelancerData.email}
@@ -110,6 +106,7 @@ function Freelancer_login() {
                       </label>
                       <input
                         type="password"
+                        required
                         className="form-control"
                         name="password"
                         value={freelancerData.password}
