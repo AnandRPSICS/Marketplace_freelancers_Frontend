@@ -23,7 +23,6 @@ function User_login() {
                   <div className="d-flex align-items-center justify-content-between mb-4">
                     <div className="form-check">
                       <input className="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" />
-                      <label className="form-check-label  user-login-label" htmlFor="flexCheckChecked"> Remember this Device </label>
                     </div>
                     <a className="user-login-label" href=""> Forgot Password?</a>
                   </div>

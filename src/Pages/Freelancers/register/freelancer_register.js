@@ -6,26 +6,74 @@ import {
   isEmailValid,
   isPhoneNumberValid,
 } from "../../../utils/validations/emailValidation";
-
+import { axiosMultipartInstance } from "../../../apis/axiosMultipart";
 function Freelancer_register() {
+  
   const navigate = useNavigate();
   const [freelancerData, setFreelancerData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    contact: "",
-    qualification: "",
-    jobrole: "",
-    jobrole: "",
+    name: "myname",
+    email: "freelancer@gmail.com",
+    password: "12341234",
+    contact: "1234567890",
+    qualification: "bcom",
+    jobrole: "designer",
     profilepic: null,
   });
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    let { name, email, password, contact, qualification, jobrole, profilepic } =
+      freelancerData;
+
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !contact ||
+      !qualification ||
+      !jobrole
+    ) {
+      alert("Please Fill All Details");
+      return; 
+    }
+    if (!isEmailValid(email)) {
+      alert("Please Enter Valid Email");
+      return;
+    }
+    if (!isPhoneNumberValid(contact)) {
+      alert("Please Enter Valid Phone Number");
+      return;
+    }
+
+    sendDataToServer();
   };
 
+  const sendDataToServer = async () => {
+    try {
+      let res = await axiosMultipartInstance.post(
+        "/freelancerRegistration",
+        freelancerData
+      );
+      if (res.status === 201) {
+        alert("Registration Successfull");
+        setTimeout(() => {
+          redirectFreelancerLogin();
+        }, 1500)
+      }
+    } catch (error) {
+      let responseStatus = error.response?.status || null;
+      if (responseStatus === 400) {
+        const responseMessage = error.response?.data?.message || null;
+        if (responseMessage) {
+          alert(responseMessage);
+        } else {
+          alert("Some Error Occured. Please try again after some time");
+        }
+      } else {
+        alert("Server Error Occured. Please try again after some time");
+      }
+    }
+  };
   const handleChanges = (e) => {
     const { name, value } = e.target;
     setFreelancerData((prevData) => ({
@@ -34,7 +82,6 @@ function Freelancer_register() {
     }));
   };
 
-  console.log("fre dat", freelancerData);
   const redirectFreelancerLogin = () => {
     navigate("/freelancer-login");
   };
@@ -128,24 +175,7 @@ function Freelancer_register() {
                         name="password"
                       />
                     </div>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="confirmPassword"
-                        className="form-label user-login-label"
-                      >
-                        Confirm Password
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="confirmPassword"
-                        minLength="6"
-                        required
-                        value={freelancerData.confirmPassword}
-                        name="confirmPassword"
-                        onChange={handleChanges}
-                      />
-                    </div>
+
                     <div className="mb-3">
                       <label
                         htmlFor="qualification"
@@ -158,7 +188,6 @@ function Freelancer_register() {
                         type="text"
                         className="form-control"
                         id="qualification"
-                        required
                         name="qualification"
                         onChange={handleChanges}
                         value={freelancerData.qualification}
@@ -182,6 +211,31 @@ function Freelancer_register() {
                         value={freelancerData.jobrole}
                       />
                     </div>
+
+                    <div className="mb-3">
+                      <label
+                        htmlFor="qualification"
+                        className="form-label user-login-label"
+                      >
+                        {" "}
+                        Profile Picture
+                      </label>
+                      <input
+                        type="file"
+                        className="form-control"
+                        id="profilepic"
+                        name="profilepic"
+                        onChange={(e) => {
+                          setFreelancerData((prevData) => {
+                            return {
+                              ...prevData,
+                              profilepic: e.target.files[0],
+                            };
+                          });
+                        }}
+                      />
+                    </div>
+
                     <button
                       type="submit"
                       className="btn w-100 py-8 fs-4 mb-4 rounded-2 user-login-button text-white"
