@@ -2,13 +2,15 @@ import React from "react";
 import "./user_register.css";
 import { useState } from "react";
 import { isEmailValid } from "../../../utils/validations/emailValidation";
+import { axiosInstance } from "../../../apis/axiosInstance";
+import { useNavigate } from "react-router-dom";
 function User_register() {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
   const handleChanges = (e) => {
     const { name, value } = e.target;
@@ -17,17 +19,55 @@ function User_register() {
       [name]: value,
     }));
   };
-  console.log("user data", userData);
 
+  const navigateUserLogin = () => {
+    navigate("/user-login");
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { firstName, lastName, email, password } = userData;
+    if (!firstName || !lastName || !email || !password) {
+      alert("Please Fill All Details");
+      return;
+    }
 
     if (!isEmailValid(userData.email)) {
       alert("Please Enter Valid Email");
       return;
     }
+    sendDataToServer();
+  };
 
-    console.log("Submitted");
+  const redirectToUserLogin = () => {
+    navigate("/user-login");
+  };
+
+  const sendDataToServer = async () => {
+    try {
+      let res = await axiosInstance.post("/userRegistration", userData);
+      if (res.status === 201) {
+        alert("Registration Successfull");
+        setTimeout(() => {
+          redirectToUserLogin();
+        }, 1500);
+      }
+    } catch (error) {
+      let responseStatus = error.response?.status || null;
+      if (
+        responseStatus === 401 ||
+        responseStatus === 400 ||
+        responseStatus === 404
+      ) {
+        const responseMessage = error.response?.data?.message || null;
+        if (responseMessage) {
+          alert(responseMessage);
+        } else {
+          alert("Some Error Occured. Please try again after some time");
+        }
+      } else {
+        alert("Server Error Occured. Please try again after some time");
+      }
+    }
   };
   return (
     <div className="user-register container">
@@ -117,28 +157,11 @@ function User_register() {
                         minLength="6"
                         onChange={handleChanges}
                         name="password"
-                        value={userData.email}
+                        value={userData.password}
                         required
                       />
                     </div>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="confirmPassword"
-                        className="form-label user-login-label"
-                      >
-                        Confirm Password
-                      </label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="confirmPassword"
-                        minLength="6"
-                        required
-                        onChange={handleChanges}
-                        value={userData.confirmPassword}
-                        name="confirmPassword"
-                      />
-                    </div>
+
                     <button
                       type="submit"
                       className="btn w-100 py-8 fs-4 mb-4 rounded-2 user-login-button text-white"
@@ -146,6 +169,18 @@ function User_register() {
                       Register
                     </button>
                   </form>
+                </div>
+                <div className="d-flex align-items-center justify-content-center">
+                  <p className="fs-5 mb-0 fw-bold">
+                    Alread have an account?
+                    <span
+                      style={{ cursor: "pointer" }}
+                      onClick={navigateUserLogin}
+                      className="fw-bold ms-2 text-decoration-none text-primary"
+                    >
+                      Login
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
