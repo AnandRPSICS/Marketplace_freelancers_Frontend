@@ -10,6 +10,12 @@ function Navbar() {
   const redirectFreelancerLogin = () => {
     navigate("/freelancer-login");
   };
+  const redirectFreelancer = () => {
+    navigate("/freelancer");
+  };
+  const redirectHome = () => {
+    navigate("/");
+  };
 
   return (
     <div className="container-fluid bg-connect">
@@ -35,15 +41,14 @@ function Navbar() {
             id="navbarNav1"
           >
             <ul className="navbar-nav">
-              <li className="nav-item m-3">
-                <a className="nav-link" href="#">
-                  Home
-                </a>
+              <li className="nav-item m-3" onClick={redirectHome}>
+                <p className="nav-link">Home</p>
+              </li>
+              <li className="nav-item m-3" onClick={redirectFreelancer}>
+                <p className="nav-link">Freelancer</p>
               </li>
               <li className="nav-item m-3">
-                <a className="nav-link" href="#">
-                  About
-                </a>
+                <p className="nav-link">Profile</p>
               </li>
               <li className="nav-item dropdown m-3">
                 <a
@@ -58,14 +63,10 @@ function Navbar() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li onClick={redirectUserLogin}>
-                    <a className="dropdown-item" >
-                      User
-                    </a>
+                    <a className="dropdown-item">User</a>
                   </li>
                   <li onClick={redirectFreelancerLogin}>
-                    <p className="dropdown-item">
-                      Freelancer
-                    </p>
+                    <p className="dropdown-item">Freelancer</p>
                   </li>
                   {/* <li>
                     <a className="dropdown-item" href="#">
