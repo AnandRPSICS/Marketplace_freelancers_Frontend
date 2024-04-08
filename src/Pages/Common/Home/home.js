@@ -5,6 +5,7 @@ import laptop from "../../../Assets/laptop.png";
 import side_fig from "../../../Assets/side_fig.png";
 import beauty from "../../../Assets/Beauty.png";
 import Navbar from "../Navbar/navbar";
+import Footer from "../Footer/footer";
 function Home(props) {
   return (
     <>
@@ -110,6 +111,7 @@ function Home(props) {
           <p className="home-banner-end">Amazing Coder</p>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

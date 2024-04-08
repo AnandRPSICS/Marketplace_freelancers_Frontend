@@ -6,9 +6,9 @@ import Freelancer_register from "./Pages/Freelancers/register/freelancer_registe
 import User_login from "./Pages/User/login/user_login";
 import User_register from "./Pages/User/register/user_register";
 import Home from "./Pages/Common/Home/home";
-import Navbar from "./Pages/Common/Navbar/navbar";
-import Footer from "./Pages/Common/Footer/footer";
 import Forgot_password from "./Pages/User/forgot_password/forgot_password";
+import ViewAllFreelancers from "./Pages/User/ViewAllFreelancers/ViewAllFreelancers";
+import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/DetailedViewFreelancers";
 function App() {
   return (
     <div className='container-fluid bg-hero m-auto w-100'>
@@ -20,6 +20,8 @@ function App() {
           <Route path="/user-login" element={<User_login />} />
           <Route path="/user-register" element={<User_register />} />
           <Route path="/user-forgot-password" element={<Forgot_password />} />
+          <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
+          <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} />
           {/* Freelancer routes  */}
           <Route path="/freelancer-login" element={<Freelancer_login />} />
           <Route
