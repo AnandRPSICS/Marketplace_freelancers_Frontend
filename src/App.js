@@ -9,6 +9,7 @@ import Home from "./Pages/Common/Home/home";
 import Forgot_password from "./Pages/User/forgot_password/forgot_password";
 import ViewAllFreelancers from "./Pages/User/ViewAllFreelancers/ViewAllFreelancers";
 import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/DetailedViewFreelancers";
+import Payment from "./Pages/User/payment/Payment";
 function App() {
   return (
     <div className='container-fluid bg-hero m-auto w-100'>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/user-forgot-password" element={<Forgot_password />} />
           <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
           <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} />
+          <Route path='/payment' element={<Payment />} />
           {/* Freelancer routes  */}
           <Route path="/freelancer-login" element={<Freelancer_login />} />
           <Route

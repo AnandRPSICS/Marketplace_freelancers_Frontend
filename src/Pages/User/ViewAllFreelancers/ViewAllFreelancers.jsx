@@ -1,13 +1,13 @@
 import React from "react";
 import "./ViewAllFreelancers.css";
-import { Container, Row, Col, Card , Button} from 'react-bootstrap';
+import { Container, Row, Col, Card , Button,Image} from 'react-bootstrap';
 import Navbar from "../../Common/Navbar/navbar";
 import profilePic from "../../../Assets/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face.jpg";
 function ViewAllFreelancers() {
   return (
     <>
       <Navbar />
-      <div className="container mt-5">
+      <div className="container my-5 bg-color rounded">
         <h1 className="text-center m-5 text-white">View All Freelancers</h1>
         <Container className="my-5">
       <Row className="m-5">

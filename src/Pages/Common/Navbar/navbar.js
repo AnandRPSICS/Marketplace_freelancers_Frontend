@@ -12,7 +12,7 @@ function Navbar() {
   };
 
   return (
-    <div className="container-fluid bg-connect">
+    <div className="container-fluid bg-connect ">
       <div className="connect justify-content-center">
         <span>Connect</span>
         <i className="bi bi-gear-wide-connected mx-3"></i>

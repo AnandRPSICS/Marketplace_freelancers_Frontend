@@ -10,7 +10,7 @@ function DetailedViewFreelancers() {
     <div>
     <Container className="mt-5 ">
       <h1 className="text-center m-5 text-white">Detailed View</h1>
-      <Row className='bg-color border-0 text-white'>
+      <Row className='bg-color border-0 text-white rounded'>
         <Col>
         <Card className="mb-3  border-0 text-white" style={{  margin: 'auto', background: 'inherit' }}>
         <Card.Body className='m-3'>
