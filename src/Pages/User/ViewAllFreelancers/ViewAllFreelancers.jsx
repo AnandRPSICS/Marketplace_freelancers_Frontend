@@ -1,127 +1,99 @@
 import React from "react";
 import "./ViewAllFreelancers.css";
+<<<<<<< HEAD
 import { Container, Row, Col, Card , Button,Image} from 'react-bootstrap';
+=======
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+>>>>>>> main
 import Navbar from "../../Common/Navbar/navbar";
 import profilePic from "../../../Assets/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face.jpg";
-function ViewAllFreelancers() {
+import placeholderImg from "../../../Assets/user-placeholder-img.jpg";
+import { useState, useEffect } from "react";
+import { BASE_URL } from "../../../apis/baseUrl";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../../apis/axiosInstance";
+function ViewAllFre1elancers() {
+  const navigate = useNavigate();
+  const [allFreelancersData, setAllFreelancersData] = useState([]);
+
+  useEffect(() => {
+    getAllFreelancers();
+  }, []);
+
+  const navigateToDetailedView = (id) => {
+    navigate(`/freelancer/${id}`);
+  };
+  const getAllFreelancers = async () => {
+    try {
+      let res = await axiosInstance.get("/getAllFreelancers");
+      let data = res?.data?.data || [];
+      setAllFreelancersData(data);
+      
+    } catch (error) {
+      console.log("Error on getting all freelancers", error);
+    }
+  };
   return (
     <>
       <Navbar />
       <div className="container my-5 bg-color rounded">
         <h1 className="text-center m-5 text-white">View All Freelancers</h1>
-        <Container className="my-5">
-      <Row className="m-5">
-      <Col md={4}>
-      <Card className="mb-3" style={{ maxWidth: '540px' }}>
-      <Row className="g-0">
-      <Col md={8}>
-          <Card.Body className="text-center">
-            <Card.Title className=" my-3 mx-2 "> Jithin Jose</Card.Title>
-            <Card.Text >Angular Developer</Card.Text>
-            <Card.Text>Job Role</Card.Text>
-            <Button variant="primary" className=" my-3 mx-2 bg-color border-0 rounded-pill" size="lg">View More</Button>{' '}
-          </Card.Body>
-        </Col>
-        <Col md={4}>
-          <Card.Img src={profilePic} className="img-fluid rounded-start" alt="profile pic" />
-        </Col>
-      </Row>
-    </Card>
-         
-        </Col>
-        <Col md={4}>
-        <Card className="mb-3" style={{ maxWidth: '540px' }}>
-      <Row className="g-0">
-      <Col md={8}>
-          <Card.Body className="text-center">
-            <Card.Title className=" my-3 mx-2 "> Jithin Jose</Card.Title>
-            <Card.Text >Angular Developer</Card.Text>
-            <Card.Text>Job Role</Card.Text>
-            <Button variant="primary" className=" my-3 mx-2 bg-color border-0 rounded-pill" size="lg">View More</Button>{' '}
-          </Card.Body>
-        </Col>
-        <Col md={4}>
-          <Card.Img src={profilePic} className="img-fluid rounded-start" alt="profile pic" />
-        </Col>
-      </Row>
-    </Card>
-        </Col>
-        <Col md={4}>
-        <Card className="mb-3" style={{ maxWidth: '540px' }}>
-      <Row className="g-0">
-      <Col md={8}>
-          <Card.Body className="text-center">
-            <Card.Title className=" my-3 mx-2 "> Jithin Jose</Card.Title>
-            <Card.Text >Angular Developer</Card.Text>
-            <Card.Text>Job Role</Card.Text>
-            <Button variant="primary" className=" my-3 mx-2 bg-color border-0 rounded-pill" size="lg">View More</Button>{' '}
-          </Card.Body>
-        </Col>
-        <Col md={4}>
-          <Card.Img src={profilePic} className="img-fluid rounded-start" alt="profile pic" />
-        </Col>
-      </Row>
-    </Card>
-        </Col>
-      </Row>
-      <Row className="m-5">
-      <Col md={4}>
-      <Card className="mb-3" style={{ maxWidth: '540px' }}>
-      <Row className="g-0">
-      <Col md={8}>
-          <Card.Body className="text-center">
-            <Card.Title className=" my-3 mx-2 "> Jithin Jose</Card.Title>
-            <Card.Text >Angular Developer</Card.Text>
-            <Card.Text>Job Role</Card.Text>
-            <Button variant="primary" className=" my-3 mx-2 bg-color border-0 rounded-pill" size="lg">View More</Button>{' '}
-          </Card.Body>
-        </Col>
-        <Col md={4}>
-          <Card.Img src={profilePic} className="img-fluid rounded-start" alt="profile pic" />
-        </Col>
-      </Row>
-    </Card>
-         
-        </Col>
-        <Col md={4}>
-        <Card className="mb-3" style={{ maxWidth: '540px' }}>
-      <Row className="g-0">
-      <Col md={8}>
-          <Card.Body className="text-center">
-            <Card.Title className=" my-3 mx-2 "> Jithin Jose</Card.Title>
-            <Card.Text >Angular Developer</Card.Text>
-            <Card.Text>Job Role</Card.Text>
-            <Button variant="primary" className=" my-3 mx-2 bg-color border-0 rounded-pill" size="lg">View More</Button>{' '}
-          </Card.Body>
-        </Col>
-        <Col md={4}>
-          <Card.Img src={profilePic} className="img-fluid rounded-start" alt="profile pic" />
-        </Col>
-      </Row>
-    </Card>
-        </Col>
-        <Col md={4}>
-        <Card className="mb-3" style={{ maxWidth: '540px' }}>
-      <Row className="g-0">
-      <Col md={8}>
-          <Card.Body className="text-center">
-            <Card.Title className=" my-3 mx-2 "> Jithin Jose</Card.Title>
-            <Card.Text >Angular Developer</Card.Text>
-            <Card.Text>Job Role</Card.Text>
-            <Button variant="primary" className=" my-3 mx-2 bg-color border-0 rounded-pill" size="lg">View More</Button>{' '}
-          </Card.Body>
-        </Col>
-        <Col md={4}>
-          <Card.Img src={profilePic} className="img-fluid rounded-start" alt="profile pic" />
-        </Col>
-      </Row>
-    </Card>
-        </Col>
-      </Row>
-    </Container>
+        <Container className="d-flex justify-content-center flex-wrap  my-5">
+          {allFreelancersData.map((freelancer) => {
+            let filename = freelancer?.profilepic?.filename || null;
+            let profilePicUrl = placeholderImg;
+            if (filename) {
+              profilePicUrl = BASE_URL + filename;
+            }
+
+            return (
+              <div key={freelancer._id}>
+                <Col md={8}>
+                  <Card className="mb-3" style={{ maxWidth: "540px" }}>
+                    <Row className="g-0">
+                      <Col md={8}>
+                        <Card.Body className="text-center">
+                          <Card.Title className=" my-3 mx-2 ">
+                            {" "}
+                            Name: &nbsp;
+                            {freelancer.name}
+                          </Card.Title>
+                          <Card.Text>
+                            Qualification: {freelancer.qualification}
+                          </Card.Text>
+                          <Card.Text>Job Role: {freelancer.jobrole}</Card.Text>
+                          <Button
+                            variant="primary"
+                            className=" my-3 mx-2 bg-color border-0 rounded-pill"
+                            size="lg"
+                            onClick={() => {
+                              navigateToDetailedView(freelancer._id);
+                            }}
+                          >
+                            View More
+                          </Button>{" "}
+                        </Card.Body>
+                      </Col>
+                      <Col
+                        md={4}
+                        className="d-flex justify-content-center align-items-center"
+                      >
+                        <Card.Img
+                          src={profilePicUrl}
+                          className="img-fluid rounded-start"
+                          alt="profile pic"
+                        />
+                      </Col>
+                    </Row>
+                  </Card>
+                </Col>
+              </div>
+            );
+          })}
+        </Container>
       </div>
     </>
   );
 }
 
-export default ViewAllFreelancers;
+export default ViewAllFre1elancers;
