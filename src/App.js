@@ -9,6 +9,7 @@ import Home from "./Pages/Common/Home/home";
 import Forgot_password from "./Pages/User/forgot_password/forgot_password";
 import ViewAllFreelancers from "./Pages/User/ViewAllFreelancers/ViewAllFreelancers";
 import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/DetailedViewFreelancers";
+import Testing from "./testing";
 function App() {
   return (
     <div className='container-fluid bg-hero m-auto w-100'>
@@ -20,8 +21,8 @@ function App() {
           <Route path="/user-login" element={<User_login />} />
           <Route path="/user-register" element={<User_register />} />
           <Route path="/user-forgot-password" element={<Forgot_password />} />
-          <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
-          <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} />
+          <Route path="/freelancer" element={<ViewAllFreelancers />} />
+          <Route path='/freelancer/:id' element={<DetailedViewFreelancers />} />
           {/* Freelancer routes  */}
           <Route path="/freelancer-login" element={<Freelancer_login />} />
           <Route
@@ -30,6 +31,7 @@ function App() {
           />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
+          <Route path="/testing" element={<Testing />} />
           <Route path="/*" element={<h1> Please re-check the Route </h1>} />
         </Routes>
       </BrowserRouter>
