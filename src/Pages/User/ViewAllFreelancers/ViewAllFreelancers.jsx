@@ -1,10 +1,8 @@
 import React from "react";
 import "./ViewAllFreelancers.css";
-<<<<<<< HEAD
+
 import { Container, Row, Col, Card , Button,Image} from 'react-bootstrap';
-=======
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
->>>>>>> main
+
 import Navbar from "../../Common/Navbar/navbar";
 import profilePic from "../../../Assets/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face.jpg";
 import placeholderImg from "../../../Assets/user-placeholder-img.jpg";
