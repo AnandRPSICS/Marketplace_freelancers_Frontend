@@ -1,7 +1,7 @@
 import React from "react";
 import "./ViewAllFreelancers.css";
 
-import { Container, Row, Col, Card , Button,Image} from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
 
 import Navbar from "../../Common/Navbar/navbar";
 import profilePic from "../../../Assets/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face.jpg";
@@ -26,7 +26,6 @@ function ViewAllFre1elancers() {
       let res = await axiosInstance.get("/getAllFreelancers");
       let data = res?.data?.data || [];
       setAllFreelancersData(data);
-      
     } catch (error) {
       console.log("Error on getting all freelancers", error);
     }
@@ -34,8 +33,16 @@ function ViewAllFre1elancers() {
   return (
     <>
       <Navbar />
-      <div className="container my-5 bg-color rounded">
-        <h1 className="text-center m-5 text-white">View All Freelancers</h1>
+      <div
+        style={{
+          position: "relative",
+          top: "900px",
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;",
+        }}
+        className="container my-5  rounded"
+      >
+        <h1 className="text-center m-5 text-dark">View All Freelancers</h1>
         <Container className="d-flex justify-content-center flex-wrap  my-5">
           {allFreelancersData.map((freelancer) => {
             let filename = freelancer?.profilepic?.filename || null;
