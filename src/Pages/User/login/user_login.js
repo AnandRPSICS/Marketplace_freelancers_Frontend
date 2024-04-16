@@ -134,8 +134,9 @@ function User_login() {
                     </div>
                     <div className="d-flex align-items-center justify-content-center">
                       <p
+                        style={{cursor: "pointer"}}
                         onClick={navigateToUserRegister}
-                        className="fs-5 mb-0 fw-bold"
+                        className="fs-5 mb-0 mt-3 fw-bold"
                       >
                         Create an User account
                       </p>
