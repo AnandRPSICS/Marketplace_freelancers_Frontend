@@ -27,7 +27,7 @@ function App() {
           <Route path="/user-forgot-password" element={<Forgot_password />} />
 
           <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
-          <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} />
+          {/* <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} /> */}
           <Route path='/payment' element={<Payment />} />
 
           <Route path="/freelancer" element={<ViewAllFreelancers />} />
