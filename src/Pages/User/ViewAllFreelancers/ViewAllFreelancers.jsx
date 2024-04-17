@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { BASE_URL } from "../../../apis/baseUrl";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../../apis/axiosInstance";
+import Footer from "../../Common/Footer/footer";
 function ViewAllFre1elancers() {
   const navigate = useNavigate();
   const [allFreelancersData, setAllFreelancersData] = useState([]);
@@ -42,8 +43,19 @@ function ViewAllFre1elancers() {
         }}
         className="container my-5  rounded"
       >
-        <h1 className="text-center m-5 text-dark">View All Freelancers</h1>
-        <Container style={{boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"}} className="d-flex justify-content-center flex-wrap  my-5">
+        {allFreelancersData.length > 0 && (
+          <h1 className="text-center m-5 text-dark">View All Freelancers</h1>
+        )}
+        <Container
+          style={{
+            boxShadow:
+              "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+          }}
+          className="d-flex justify-content-center flex-wrap  my-5"
+        >
+          {allFreelancersData.length === 0 && (
+            <h1 className="text-center m-5 text-dark">Freelancers Data Not Found</h1>
+          )}
           {allFreelancersData.map((freelancer) => {
             let filename = freelancer?.profilepic?.filename || null;
             let profilePicUrl = placeholderImg;
@@ -96,6 +108,9 @@ function ViewAllFre1elancers() {
             );
           })}
         </Container>
+      </div>
+      <div className="mt-5" style={{ position: "relative", top: "900px" }}>
+        <Footer />
       </div>
     </>
   );

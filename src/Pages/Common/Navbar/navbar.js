@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutSuccess } from "../../../redux/slices/authSlice";
+import useLocalStorage from "../../../customHooks/useLocalStorage";
 function Navbar() {
+  const { setDataToRedux } = useLocalStorage();
+
+  useEffect(() => {
+    setDataToRedux();
+  }, []);
   const navigate = useNavigate();
   const { isUserLoggedIn, userData, userType, userId } = useSelector(
     (state) => state.auth
   );
   const dispatch = useDispatch();
-
-  console.log("=useSelector", isUserLoggedIn);
   const redirectUserLogin = () => {
     navigate("/user-login");
   };
@@ -26,12 +30,15 @@ function Navbar() {
   };
 
   const handleLogout = () => {
+    if (localStorage.getItem("freelancerData")) {
+      localStorage.removeItem("freelancerData");
+    }
     dispatch(logoutSuccess());
-    navigate("user-login");
+    navigate("/user-login");
   };
-  const redirectUserRequest = () => [
-    navigate("/user-request"),
-  ]
+  const redirectUserRequest = () => {
+    navigate("/user-request");
+  };
 
   return (
     <div className="container-fluid bg-connect ">
@@ -57,14 +64,26 @@ function Navbar() {
             id="navbarNav1"
           >
             <ul className="navbar-nav">
-              <li className="nav-item m-3" onClick={redirectHome}>
+              <li
+                className="nav-item m-3"
+                style={{ cursor: "pointer" }}
+                onClick={redirectHome}
+              >
                 <p className="nav-link">Home</p>
               </li>
-              <li className="nav-item m-3" onClick={redirectFreelancer}>
+              <li
+                className="nav-item m-3"
+                style={{ cursor: "pointer" }}
+                onClick={redirectFreelancer}
+              >
                 <p className="nav-link">Freelancers</p>
               </li>
               {userType === "user" && (
-                <li style={{cursor: "pointer"}} className="nav-item m-3" onClick={redirectUserRequest}>
+                <li
+                  style={{ cursor: "pointer" }}
+                  className="nav-item m-3"
+                  onClick={redirectUserRequest}
+                >
                   <p className="nav-link">Request</p>
                 </li>
               )}
@@ -102,10 +121,16 @@ function Navbar() {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <li onClick={redirectUserLogin}>
+                    <li
+                      onClick={redirectUserLogin}
+                      style={{ cursor: "pointer" }}
+                    >
                       <a className="dropdown-item">User</a>
                     </li>
-                    <li onClick={redirectFreelancerLogin}>
+                    <li
+                      onClick={redirectFreelancerLogin}
+                      style={{ cursor: "pointer" }}
+                    >
                       <p className="dropdown-item">Freelancer</p>
                     </li>
                     {/* <li>

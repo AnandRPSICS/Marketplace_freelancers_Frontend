@@ -15,15 +15,24 @@ const UserRequest = () => {
     description: "",
     budget: "",
     category: "",
+    deadline: "",
   });
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
-    
 
     setValidated(true);
   };
+  const handleChanges = (e) => {
+    const { name, value } = e.target;
+    setRequestData({
+      ...requestData,
+      [name]: value,
+    });
+  };
+
+  console.log("req work", requestData);
 
   return (
     <>
@@ -43,14 +52,28 @@ const UserRequest = () => {
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom03">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Title" required />
+              <Form.Control
+                type="text"
+                name="title"
+                value={requestData.title}
+                onChange={handleChanges}
+                placeholder="Title"
+                required
+              />
               <Form.Control.Feedback type="invalid" className="text-light">
                 Please provide a valid title.
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="6">
-              <Form.Label>State</Form.Label>
-              <Form.Control type="text" placeholder="State" required />
+              <Form.Label>Deadline</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="Deadline"
+                name="deadline"
+                value={requestData.deadline}
+                onChange={handleChanges}
+                required
+              />
               <Form.Control.Feedback type="invalid" className="text-light">
                 Please provide a valid state.
               </Form.Control.Feedback>
@@ -59,7 +82,14 @@ const UserRequest = () => {
           <Row>
             <Form.Group as={Col} md="12">
               <Form.Label>Description</Form.Label>
-              <Form.Control type="text" placeholder="Description" required />
+              <Form.Control
+                type="text"
+                name="description"
+                value={requestData.description}
+                onChange={handleChanges}
+                placeholder="Description"
+                required
+              />
               <Form.Control.Feedback type="invalid" className="text-light">
                 Tell us more about your requested work.
               </Form.Control.Feedback>
@@ -69,14 +99,29 @@ const UserRequest = () => {
           <Row className="mb-3 mt-3">
             <Form.Group as={Col} md="6">
               <Form.Label>Category</Form.Label>
-              <Form.Control type="text" placeholder="Category" required />
+              <Form.Control
+                type="text"
+                placeholder="Category"
+                name="category"
+                value={requestData.category}
+                onChange={handleChanges}
+                required
+              />
               <Form.Control.Feedback type="invalid" className="text-light">
                 Please provide a valid Categor.
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="6">
               <Form.Label>Your Budget</Form.Label>
-              <Form.Control type="number" placeholder="Budget" required />
+              <Form.Control
+                as="input"
+                name="budget"
+                value={requestData.budget}
+                onChange={handleChanges}
+                type="number"
+                placeholder="Budget"
+                required
+              />
               <Form.Control.Feedback type="invalid" className="text-light">
                 Please provide your maximum budget for thiw work.
               </Form.Control.Feedback>
