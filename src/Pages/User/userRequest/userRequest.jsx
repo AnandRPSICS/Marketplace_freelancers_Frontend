@@ -1,14 +1,19 @@
 import Navbar from "../../Common/Navbar/navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import "./userRequest.css";
 import Footer from "../../Common/Footer/footer";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../../apis/axiosInstance";
+import "./userRequest.css";
 const UserRequest = () => {
   const [validated, setValidated] = useState(false);
+  const { userId } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const [requestData, setRequestData] = useState({
     userId: "",
     title: "",
@@ -17,12 +22,56 @@ const UserRequest = () => {
     category: "",
     deadline: "",
   });
+
+  useEffect(() => {
+    if (userId) {
+      setRequestData({ ...requestData, userId });
+    } else {
+      alert("Please login again..");
+      setTimeout(() => {
+        navigate("../user-login");
+      }, 0);
+    }
+  }, []);
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
-
     setValidated(true);
+
+    if (
+      !requestData.userId ||
+      !requestData.title ||
+      !requestData.description ||
+      !requestData.budget ||
+      !requestData.category ||
+      !requestData.deadline
+    ) {
+      alert("Please fill all the fields");
+      return;
+    }
+
+    sendDataToServer();
+  };
+  const sendDataToServer = async () => {
+    try {
+      let res = await axiosInstance.post("/createWorkRequest", requestData);
+      if (res.status == 201) {
+        alert("Request sent successfully.");
+      }
+    } catch (err) {
+      console.log("err", err);
+      let status = err.response?.status || null;
+      console.log('stat', status)
+      if (status === 401) {
+        let warningMsg = err?.response?.data?.message || null;
+        if (warningMsg) {
+          alert(warningMsg);
+          return;
+        }
+      }
+      alert("Server Error");
+    }
   };
   const handleChanges = (e) => {
     const { name, value } = e.target;
@@ -123,7 +172,7 @@ const UserRequest = () => {
                 required
               />
               <Form.Control.Feedback type="invalid" className="text-light">
-                Please provide your maximum budget for thiw work.
+                Please provide your maximum budget for this work.
               </Form.Control.Feedback>
             </Form.Group>
           </Row>
