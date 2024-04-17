@@ -15,7 +15,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="my-footer">
+    <div className="my-footer" >
       <div>
         <Stack>
           <h4 className="footer-logo"> Freelancer </h4>

@@ -6,6 +6,7 @@ import { axiosInstance } from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseUrl";
 import placeholderImg from "../../../Assets/user-placeholder-img.jpg";
 import "./DetailedViewFreelancers.css";
+import Footer from "../../Common/Footer/footer";
 function DetailedViewFreelancers() {
   const { id } = useParams();
   const [freelancerData, setFreelancerData] = useState(null);
@@ -40,7 +41,7 @@ function DetailedViewFreelancers() {
       <Navbar />
       <div style={{position: "relative", top: "900px"}}>
         <Container className="mt-5 ">
-          <h1 className="text-center m-5 text-dark">Detailed View</h1>
+          <h1 className="text-center m-5 text-dark">Freelancer Details</h1>
           <Row style={{backgroundColor: "#eee"}} className=" border-0 text-white">
             <Col>
               <Card
@@ -72,6 +73,10 @@ function DetailedViewFreelancers() {
             </Col>
           </Row>
         </Container>
+      </div>
+      <div style={{ position: "relative", top: "900px" }}>
+
+        <Footer />
       </div>
     </>
   );

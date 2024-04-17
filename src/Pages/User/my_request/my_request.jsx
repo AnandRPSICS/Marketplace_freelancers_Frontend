@@ -4,10 +4,13 @@ import Navbar from "../../Common/Navbar/navbar";
 import Footer from "../../Common/Footer/footer";
 import { axiosInstance } from "../../../apis/axiosInstance";
 import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import "./my_request.css";
 function MyRequests() {
+  
   const [requests, setRequests] = useState([]);
   const {userId} = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   useEffect(() => {
     if (userId) {
       getRequestsData(userId);
@@ -28,6 +31,9 @@ function MyRequests() {
       console.log("Error on getting requests", error);
     }
   };
+  const redirectToViewResponses = (id) => {
+    navigate("/view-responses/"+id);
+  }
   return (
     <>
       <Navbar />
@@ -43,7 +49,7 @@ function MyRequests() {
                 <th>Category</th>
                 <th>Budget</th>
                 <th>Deadline</th>
-                <th>View Status</th>
+                <th>View Responses</th>
               </tr>
             </thead>
             <tbody className="text-center">
@@ -58,7 +64,9 @@ function MyRequests() {
                     <td>{req.budget}</td>
                     <td>{req.deadline?.substring(0, 10) }</td>
                     <td>
-                      <Button variant="success">View Status</Button>
+                      <Button variant="success" onClick={() => {
+                        redirectToViewResponses(req._id)
+                      }}>View Responses</Button>
                     </td>
                   </tr>
                 );
