@@ -43,7 +43,7 @@ function ViewAllFre1elancers() {
         className="container my-5  rounded"
       >
         <h1 className="text-center m-5 text-dark">View All Freelancers</h1>
-        <Container className="d-flex justify-content-center flex-wrap  my-5">
+        <Container style={{boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"}} className="d-flex justify-content-center flex-wrap  my-5">
           {allFreelancersData.map((freelancer) => {
             let filename = freelancer?.profilepic?.filename || null;
             let profilePicUrl = placeholderImg;
