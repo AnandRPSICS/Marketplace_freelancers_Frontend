@@ -4,8 +4,11 @@ import { useState } from "react";
 import { axiosInstance } from "../../../apis/axiosInstance";
 import { isEmailValid } from "../../../utils/validations/emailValidation";
 import "./freelancer_login.css";
+import {useDispatch} from 'react-redux';
+import { loginSuccess } from "../../../redux/slices/authSlice";
 
 function Freelancer_login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [freelancerData, setFreelancerData] = useState({
@@ -43,6 +46,16 @@ function Freelancer_login() {
       let res = await axiosInstance.post("/freelancerLogin", freelancerData);
       if (res.status === 200) {
         alert("Login Successfull");
+
+        let data = res?.data?.data || null;
+        if (data && data._id) {
+          let obj = {
+            userData: data,
+            userId: data._id,
+            userType: "freelancer"
+          }
+          dispatch(loginSuccess(obj));
+        }
         setTimeout(() => {
           // TODO
           // Redirect here to freelancer home page

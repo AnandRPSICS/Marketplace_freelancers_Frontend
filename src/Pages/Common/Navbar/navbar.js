@@ -2,8 +2,16 @@ import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSelector , useDispatch} from "react-redux";
+import {logoutSuccess} from "../../../redux/slices/authSlice";
 function Navbar() {
   const navigate = useNavigate();
+  const { isUserLoggedIn, userData, userId } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+
+  console.log("=useSelector", isUserLoggedIn);
   const redirectUserLogin = () => {
     navigate("/user-login");
   };
@@ -16,6 +24,11 @@ function Navbar() {
   const redirectHome = () => {
     navigate("/");
   };
+
+  const handleLogout = () => {
+    dispatch(logoutSuccess());
+    navigate('user-login')
+  }
 
   return (
     <div className="container-fluid bg-connect ">
@@ -47,34 +60,50 @@ function Navbar() {
               <li className="nav-item m-3" onClick={redirectFreelancer}>
                 <p className="nav-link">Freelancer</p>
               </li>
-              <li className="nav-item m-3">
-                <p className="nav-link">Profile</p>
-              </li>
-              <li className="nav-item dropdown m-3">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Login
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li onClick={redirectUserLogin}>
-                    <a className="dropdown-item">User</a>
+
+              {isUserLoggedIn ? (
+                <>
+                  <li className="nav-item m-3">
+                    {/* <p className="nav-link">Profile</p> */}
+                    <p className="nav-link">Profile</p>
                   </li>
-                  <li onClick={redirectFreelancerLogin}>
-                    <p className="dropdown-item">Freelancer</p>
+                  <li className="nav-item m-3 ">
+                    {/* <p className="nav-link">Profile</p> */}
+                    <p onClick={handleLogout} style={{cursor: "pointer"}} className="nav-link text-danger fw-bold">
+                      Logout
+                    </p>
                   </li>
-                  {/* <li>
+                </>
+              ) : (
+                <li className="nav-item dropdown m-3">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Login
+                  </a>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <li onClick={redirectUserLogin}>
+                      <a className="dropdown-item">User</a>
+                    </li>
+                    <li onClick={redirectFreelancerLogin}>
+                      <p className="dropdown-item">Freelancer</p>
+                    </li>
+                    {/* <li>
                     <a className="dropdown-item" href="#">
                       Admin
                     </a>
                   </li> */}
-                </ul>
-              </li>
+                  </ul>
+                </li>
+              )}
             </ul>
           </div>
         </div>

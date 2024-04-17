@@ -1,44 +1,87 @@
-import React from 'react';
-import './footer.css';
+import React from "react";
+import { Form, InputGroup, Stack } from "react-bootstrap";
+import { AiOutlineMail } from "react-icons/ai";
+import { FaSquareInstagram } from "react-icons/fa6";
+import {
+  AiFillFacebook,
+  AiFillTwitterSquare,
+  AiFillGoogleCircle,
+} from "react-icons/ai";
+import "./footer.css";
 
-function Footer() {
+const Footer = () => {
+  const iconStyle = {
+    fontSize: "25px",
+  };
+
   return (
-    <div className='container-fluid bg-white m-0'>
-      <nav className="navbar navbar-expand-lg navbar-light" id='footer-base'>
-        <div className="container-fluid mx-5">
-          <span className="connect footer-brand mx-5">
-            <span>Connect</span>
-            <i className="bi bi-gear-wide-connected mx-3 d-inline"></i>
-          </span>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse mx-5 " id="navbarNav">
-            <ul className="navbar-nav mx-5">
-              <li className="nav-item  mx-2">
-                <a className="nav-link footer-nav" href="#">Home</a>
-              </li>
-              <li className="nav-item mx-2">
-                <a className="nav-link footer-nav" href="#">About</a>
-              </li>
-              <li className="nav-item mx-2">
-                <a className="nav-link footer-nav" href="#">Login</a>
-              </li>
-              <li className="nav-item mx-2">
-                <a className="nav-link footer-nav" href="#">Blog</a>
-              </li>
-              <li className="nav-item mx-2">
-                <a className="nav-link footer-nav" href="#">Success Stories</a>
-              </li>
-              <li className="nav-item mx-2">
-                <a className="nav-link footer-nav" href="#">FAQs</a>
-              </li>
-            </ul>
+    <div className="my-footer">
+      <div>
+        <Stack>
+          <h4 className="footer-logo"> Freelancer </h4>
+          <InputGroup style={{width: "240px"}} className="footer-mail">
+            <InputGroup.Text>
+              <AiOutlineMail />
+            </InputGroup.Text>
+            <Form.Control  type="text" placeholder="Enter Your Email" />
+          </InputGroup>
+          <div className="socialmedia-icons">
+            <FaSquareInstagram style={iconStyle} />
+            <AiFillFacebook style={iconStyle} />
+            <AiFillTwitterSquare style={iconStyle} />
+            <AiFillGoogleCircle style={iconStyle} />
           </div>
-        </div>
-      </nav>
-    </div>
-  )
-}
+        </Stack>
 
-export default Footer
+        <Stack className="my-stack">
+          <p>Links</p>
+          <p>Home</p>
+          <p>Support</p>
+          <p>About </p>
+        </Stack>
+
+        <>
+          <Stack className="my-stack">
+            <p>Services</p>
+            <p>Insurance</p>
+            <p>Legal</p>
+            <p>Site Map</p>
+          </Stack>
+
+          <Stack className="my-stack">
+            <p>About </p>
+            <p>Accessability</p>
+            <p>Enviornment</p>
+            <p>Branches</p>
+          </Stack>
+
+          <Stack className="my-stack">
+            <p>Contact us</p>
+            <p>(+91) 123-456-7890</p>
+            <p>freelancer@gmail.com</p>
+          </Stack>
+        </>
+
+        <Stack className="download-app-stack my-stack">
+          <p>Download App</p>
+          <img
+            src="https://pbs.twimg.com/media/F8K8X3_XMAAKWYp?format=jpg&name=small"
+            alt="play-store"
+          />
+          <img
+            src="https://pbs.twimg.com/media/F8K9Y0mXUAA7itL?format=png&name=small"
+            alt="play-store"
+          />
+        </Stack>
+      </div>
+      <div className="footer-credit">
+        <p>©2024 Freelancer</p>
+        <div>
+          <p>Terms of Service</p>
+          <p>Privacy Policy</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default Footer;
