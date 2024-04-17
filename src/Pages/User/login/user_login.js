@@ -57,6 +57,7 @@ function User_login() {
             userType: "user"
           }
           dispatch(loginSuccess(obj));
+          localStorage.setItem("freelancerData",JSON.stringify(obj));
         }
 
         alert("Login Successfull");

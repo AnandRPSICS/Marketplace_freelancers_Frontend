@@ -55,6 +55,7 @@ function Freelancer_login() {
             userType: "freelancer"
           }
           dispatch(loginSuccess(obj));
+          localStorage.setItem("freelancerData",JSON.stringify(obj));
         }
         setTimeout(() => {
           // TODO
