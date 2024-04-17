@@ -14,6 +14,7 @@ import Payment from "./Pages/User/payment/Payment";
 import UserRequest from "./Pages/User/userRequest/userRequest";
 
 import Testing from "./testing";
+import Users_Request from "./Pages/Freelancers/Users_Request/Users_Request";
 
 function App() {
   return (
@@ -35,12 +36,15 @@ function App() {
           <Route path="/freelancer" element={<ViewAllFreelancers />} />
           <Route path='/freelancer/:id' element={<DetailedViewFreelancers />} />
 
+          
+
           {/* Freelancer routes  */}
           <Route path="/freelancer-login" element={<Freelancer_login />} />
           <Route
             path="/freelancer-register"
             element={<Freelancer_register />}
           />
+          <Route path="users-request" element={<Users_Request />} />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
           <Route path="/testing" element={<Testing />} />
