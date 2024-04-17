@@ -12,10 +12,9 @@ import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/Detail
 
 import Payment from "./Pages/User/payment/Payment";
 import UserRequest from "./Pages/User/userRequest/userRequest";
-
+import MyRequests from "./Pages/User/my_request/my_request";
 import Testing from "./testing";
-import Users_Request from "./Pages/Freelancers/Users_Request/Users_Request";
-
+import Users_Request from "./Pages/Freelancers/View_Request/view_request";
 function App() {
   return (
     <div className='container-fluid bg-hero m-auto ' style={{padding: 0}}>
@@ -27,6 +26,7 @@ function App() {
           <Route path="/user-login" element={<User_login />} />
           <Route path="/user-register" element={<User_register />} />
           <Route path="/user-request" element={<UserRequest />} />
+          <Route path="/user-myrequests" element={<MyRequests />} />
           <Route path="/user-forgot-password" element={<Forgot_password />} />
 
           <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
@@ -35,7 +35,7 @@ function App() {
 
           <Route path="/freelancer" element={<ViewAllFreelancers />} />
           <Route path='/freelancer/:id' element={<DetailedViewFreelancers />} />
-
+          {/* <Route path="" /> */}
           
 
           {/* Freelancer routes  */}
@@ -44,7 +44,7 @@ function App() {
             path="/freelancer-register"
             element={<Freelancer_register />}
           />
-          <Route path="users-request" element={<Users_Request />} />
+          <Route path="/view-request" element={<Users_Request />} />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
           <Route path="/testing" element={<Testing />} />
