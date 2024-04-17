@@ -15,6 +15,8 @@ import Testing from "./testing";
 import ViewAllUsersRequests from "./Pages/Freelancers/View_Request/view_request";
 import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/DetailedViewFreelancers";
 import {ViewResponseDetails} from "./Pages/User/responseDetails/responseDetails.jsx";
+import User_Profile from "./Pages/User/User_Profile/User_Profile";
+
 function App() {
   return (
     <div className="container-fluid bg-hero m-auto " style={{ padding: 0 }}>
@@ -32,6 +34,9 @@ function App() {
             path="/view-all-freelancers"
             element={<ViewAllFreelancers />}
           />
+          <Route path="/user-profile" element={<User_Profile />} />
+
+          <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
           {/* <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} /> */}
           <Route path="/payment" element={<Payment />} />
 
