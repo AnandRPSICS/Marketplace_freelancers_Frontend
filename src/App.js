@@ -15,6 +15,7 @@ import UserRequest from "./Pages/User/userRequest/userRequest";
 
 import Testing from "./testing";
 import Users_Request from "./Pages/Freelancers/Users_Request/Users_Request";
+import User_Profile from "./Pages/User/User_Profile/User_Profile";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/user-register" element={<User_register />} />
           <Route path="/user-request" element={<UserRequest />} />
           <Route path="/user-forgot-password" element={<Forgot_password />} />
+          <Route path="/user-profile" element={<User_Profile />} />
 
           <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
           {/* <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} /> */}
