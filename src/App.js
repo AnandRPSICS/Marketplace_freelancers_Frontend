@@ -11,13 +11,14 @@ import ViewAllFreelancers from "./Pages/User/ViewAllFreelancers/ViewAllFreelance
 import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/DetailedViewFreelancers";
 
 import Payment from "./Pages/User/payment/Payment";
+import UserRequest from "./Pages/User/userRequest/userRequest";
 
 import Testing from "./testing";
 import Users_Request from "./Pages/Freelancers/Users_Request/Users_Request";
 
 function App() {
   return (
-    <div className='container-fluid bg-hero m-auto w-100'>
+    <div className='container-fluid bg-hero m-auto ' style={{padding: 0}}>
     
       <BrowserRouter>
         <Routes>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/user-login" element={<User_login />} />
           <Route path="/user-register" element={<User_register />} />
+          <Route path="/user-request" element={<UserRequest />} />
           <Route path="/user-forgot-password" element={<Forgot_password />} />
 
           <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
