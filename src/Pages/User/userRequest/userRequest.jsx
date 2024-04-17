@@ -58,11 +58,12 @@ const UserRequest = () => {
       let res = await axiosInstance.post("/createWorkRequest", requestData);
       if (res.status == 201) {
         alert("Request sent successfully.");
+        setTimeout(() => {
+          navigate('/user-myrequests')
+        }, 1000)
       }
     } catch (err) {
-      console.log("err", err);
       let status = err.response?.status || null;
-      console.log('stat', status)
       if (status === 401) {
         let warningMsg = err?.response?.data?.message || null;
         if (warningMsg) {

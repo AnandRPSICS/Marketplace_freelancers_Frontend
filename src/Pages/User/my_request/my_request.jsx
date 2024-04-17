@@ -19,7 +19,8 @@ function MyRequests() {
       const res = await axiosInstance.get("/getWorkRequestsByUserId/"+userId);
       if (res.status === 200) {
         let data = res.data?.data || [];
-        setRequests(data);
+        let revData = data.reverse();
+        setRequests(revData);
       } else {
         console.log("Error on getting requests");
       }
@@ -66,7 +67,7 @@ function MyRequests() {
           </Table>
         </Container>
       </div>
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", top: "400px" }}>
         <Footer />
       </div>
     </>

@@ -14,7 +14,7 @@ import Payment from "./Pages/User/payment/Payment";
 import UserRequest from "./Pages/User/userRequest/userRequest";
 import MyRequests from "./Pages/User/my_request/my_request";
 import Testing from "./testing";
-import Users_Request from "./Pages/Freelancers/View_Request/view_request";
+import ViewAllUsersRequests from "./Pages/Freelancers/View_Request/view_request";
 function App() {
   return (
     <div className='container-fluid bg-hero m-auto ' style={{padding: 0}}>
@@ -44,7 +44,7 @@ function App() {
             path="/freelancer-register"
             element={<Freelancer_register />}
           />
-          <Route path="/view-request" element={<Users_Request />} />
+          <Route path="/view-request" element={<ViewAllUsersRequests />} />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
           <Route path="/testing" element={<Testing />} />

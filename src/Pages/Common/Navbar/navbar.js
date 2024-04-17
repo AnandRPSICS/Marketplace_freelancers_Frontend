@@ -45,7 +45,7 @@ function Navbar() {
 
   const redirectMyRequests = () => {
     navigate("/user-myrequests");
-  }
+  };
   return (
     <div className="container-fluid bg-connect ">
       <div className="connect justify-content-center">
@@ -84,13 +84,7 @@ function Navbar() {
               >
                 <p className="nav-link">Freelancers</p>
               </li>
-              <li
-                className="nav-item m-3"
-                style={{ cursor: "pointer" }}
-                onClick={redirectViewRequests}
-              >
-                <p className="nav-link">View Requests</p>
-              </li>
+
               {userType === "user" && (
                 <li
                   style={{ cursor: "pointer" }}
@@ -98,6 +92,15 @@ function Navbar() {
                   onClick={redirectUserRequest}
                 >
                   <p className="nav-link">Request Work</p>
+                </li>
+              )}
+              {userType === "freelancer" && (
+                <li
+                  className="nav-item m-3"
+                  style={{ cursor: "pointer" }}
+                  onClick={redirectViewRequests}
+                >
+                  <p className="nav-link">View Requests</p>
                 </li>
               )}
               {userType === "user" && (
