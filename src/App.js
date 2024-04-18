@@ -18,6 +18,8 @@ import {ViewResponseDetails} from "./Pages/User/responseDetails/responseDetails.
 import User_Profile from "./Pages/User/User_Profile/User_Profile";
 import Admin_Dashboard from "./Pages/Admin/Admin_Dashboard/Admin_Dashboard.jsx";
 import Admin_ViewAllUsers from "./Pages/Admin/Admin_ViewAllUsers/Admin_ViewAllUsers.jsx";
+import Admin_ViewAllFreelancers from "./Pages/Admin/Admin_ViewAllFreelancers/Admin_ViewAllFreelancers.jsx";
+import Admin_ViewAllRequests from "./Pages/Admin/Admin_ViewAllRequests/Admin_ViewAllRequests.jsx";
 
 function App() {
   return (
@@ -57,6 +59,8 @@ function App() {
           <Route path="/admin" element={<Admin_login />} />
           <Route path="/admin-dashboard" element={<Admin_Dashboard  />}/>
           <Route path="/admin-view-all-users" element={<Admin_ViewAllUsers />}/>
+          <Route path="/admin-view-all-freelancers" element={<Admin_ViewAllFreelancers />}/>
+          <Route path="/admin-view-all-requests" element={<Admin_ViewAllRequests />}/>
           <Route path="/testing" element={<Testing />} />
           <Route path="/*" element={<h1> Please re-check the Route </h1>} />
         </Routes>
