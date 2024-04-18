@@ -1,5 +1,5 @@
 import "./App.css";
-import Admin_login from "./Pages/Admin/admin_login";
+import Admin_login from "./Pages/Admin/Admin_Login/admin_login.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Freelancer_login from "./Pages/Freelancers/login/freelancer_login";
 import Freelancer_register from "./Pages/Freelancers/register/freelancer_register";
@@ -16,6 +16,12 @@ import ViewAllUsersRequests from "./Pages/Freelancers/View_Request/view_request"
 import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/DetailedViewFreelancers";
 import {ViewResponseDetails} from "./Pages/User/responseDetails/responseDetails.jsx";
 import User_Profile from "./Pages/User/User_Profile/User_Profile";
+import Admin_Dashboard from "./Pages/Admin/Admin_Dashboard/Admin_Dashboard.jsx";
+import Admin_ViewAllUsers from "./Pages/Admin/Admin_ViewAllUsers/Admin_ViewAllUsers.jsx";
+import Admin_ViewAllFreelancers from "./Pages/Admin/Admin_ViewAllFreelancers/Admin_ViewAllFreelancers.jsx";
+import Admin_ViewAllRequests from "./Pages/Admin/Admin_ViewAllRequests/Admin_ViewAllRequests.jsx";
+import Freelancer_Profile from "./Pages/Freelancers/Freelancer_Profile/Freelancer_Profile.jsx";
+import View_Request_Details from "./Pages/Freelancers/View_Request_Details/View_Request_Details.jsx";
 
 function App() {
   return (
@@ -50,9 +56,15 @@ function App() {
             path="/freelancer-register"
             element={<Freelancer_register />}
           />
+          <Route path="/freelancer-profile" element={<Freelancer_Profile/>} />
           <Route path="/view-request" element={<ViewAllUsersRequests />} />
+          <Route path="/view-request/:id" element={<View_Request_Details />} />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
+          <Route path="/admin-dashboard" element={<Admin_Dashboard  />}/>
+          <Route path="/admin-view-all-users" element={<Admin_ViewAllUsers />}/>
+          <Route path="/admin-view-all-freelancers" element={<Admin_ViewAllFreelancers />}/>
+          <Route path="/admin-view-all-requests" element={<Admin_ViewAllRequests />}/>
           <Route path="/testing" element={<Testing />} />
           <Route path="/*" element={<h1> Please re-check the Route </h1>} />
         </Routes>
