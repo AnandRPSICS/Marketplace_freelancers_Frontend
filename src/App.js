@@ -1,5 +1,5 @@
 import "./App.css";
-import Admin_login from "./Pages/Admin/admin_login";
+import Admin_login from "./Pages/Admin/Admin_Login/admin_login.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Freelancer_login from "./Pages/Freelancers/login/freelancer_login";
 import Freelancer_register from "./Pages/Freelancers/register/freelancer_register";
@@ -16,6 +16,7 @@ import ViewAllUsersRequests from "./Pages/Freelancers/View_Request/view_request"
 import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/DetailedViewFreelancers";
 import {ViewResponseDetails} from "./Pages/User/responseDetails/responseDetails.jsx";
 import User_Profile from "./Pages/User/User_Profile/User_Profile";
+import Admin_Dashboard from "./Pages/Admin/Admin_Dashboard/Admin_Dashboard.jsx";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/view-request" element={<ViewAllUsersRequests />} />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
+          <Route path="/admin-dashboard" element={<Admin_Dashboard  />}/>
           <Route path="/testing" element={<Testing />} />
           <Route path="/*" element={<h1> Please re-check the Route </h1>} />
         </Routes>
