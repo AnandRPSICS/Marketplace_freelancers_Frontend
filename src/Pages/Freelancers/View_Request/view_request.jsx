@@ -92,6 +92,7 @@ function ViewAllUsersRequests() {
     }
   };
   const viewRequestStatus = (req) => {
+    navigate('/view-request/'+req._id)
 
   }
   console.log("is clicked", clickedRequest);
