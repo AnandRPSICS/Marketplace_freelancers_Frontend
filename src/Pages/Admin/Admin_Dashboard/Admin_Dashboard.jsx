@@ -24,25 +24,25 @@ function Admin_Dashboard() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <ul className="list-unstyled">
-              <li className="nav-item">
+              <li className="nav-item m-1 p-1">
                 <Link to="/dashboard" className="nav-link m-3 d-flex align-items-center text-decoration-none" style={{color: "inherit"}}>
                   <BsGrid className="me-2" />
                   Dashboard
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item m-1 p-1">
                 <Link to="/users" className="nav-link m-3 d-flex align-items-center text-decoration-none" style={{color: "inherit"}}>
                   <BsPeople className="me-2" />
                   Users
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item m-1 p-1">
                 <Link to="/freelancers" className="nav-link m-3 d-flex align-items-center text-decoration-none" style={{color: "inherit"}}>
                   <BsPerson className="me-2" />
                   Freelancers
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item m-1 p-1">
                 <Link to="/requests" className="nav-link m-3 d-flex align-items-center text-decoration-none" style={{color: "inherit"}}>
                   <BsCollectionFill className="me-2" />
                   Requests
