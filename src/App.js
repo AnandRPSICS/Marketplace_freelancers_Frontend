@@ -21,6 +21,7 @@ import Admin_ViewAllUsers from "./Pages/Admin/Admin_ViewAllUsers/Admin_ViewAllUs
 import Admin_ViewAllFreelancers from "./Pages/Admin/Admin_ViewAllFreelancers/Admin_ViewAllFreelancers.jsx";
 import Admin_ViewAllRequests from "./Pages/Admin/Admin_ViewAllRequests/Admin_ViewAllRequests.jsx";
 import Freelancer_Profile from "./Pages/Freelancers/Freelancer_Profile/Freelancer_Profile.jsx";
+import View_Request_Details from "./Pages/Freelancers/View_Request_Details/View_Request_Details.jsx";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
           />
           <Route path="/freelancer-profile" element={<Freelancer_Profile/>} />
           <Route path="/view-request" element={<ViewAllUsersRequests />} />
+          <Route path="/view-request/:id" element={<View_Request_Details />} />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
           <Route path="/admin-dashboard" element={<Admin_Dashboard  />}/>
