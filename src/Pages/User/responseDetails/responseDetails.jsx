@@ -89,7 +89,9 @@ export const ViewResponseDetails = () => {
                             {" "}
                             View Freelancer{" "}
                           </Button>
-                          <Button className="ms-5" variant="success">
+                          <Button onClick={() => {
+                            navigate('/payment')
+                          }} className="ms-5" variant="success">
                             {" "}
                             Accept {" "}
                           </Button>
