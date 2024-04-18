@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutSuccess } from "../../../redux/slices/authSlice";
 import useLocalStorage from "../../../customHooks/useLocalStorage";
+
 function Navbar() {
   const { setDataToRedux } = useLocalStorage();
 
@@ -34,7 +35,7 @@ function Navbar() {
       localStorage.removeItem("freelancerData");
     }
     dispatch(logoutSuccess());
-    navigate("/user-login");
+    navigate("/");
   };
   const redirectUserRequest = () => {
     navigate("/user-request");
@@ -46,6 +47,13 @@ function Navbar() {
   const redirectMyRequests = () => {
     navigate("/user-myrequests");
   };
+  const redirectProfile = () => {
+    if (userType === "user") {
+      navigate("/user-profile");
+    }else if (userType === "freelancer") {
+      navigate("/freelancer-profile");
+    }
+  }
   return (
     <div className="container-fluid bg-connect ">
       <div className="connect justify-content-center">
@@ -114,9 +122,9 @@ function Navbar() {
               )}
               {isUserLoggedIn ? (
                 <>
-                  <li className="nav-item m-3">
+                  <li className="nav-item m-3" style={{cursor: "pointer"}}>
                     {/* <p className="nav-link">Profile</p> */}
-                    <p className="nav-link">Profile</p>
+                    <p className="nav-link" onClick={redirectProfile}>Profile</p>
                   </li>
                   <li className="nav-item m-3 ">
                     {/* <p className="nav-link">Profile</p> */}
