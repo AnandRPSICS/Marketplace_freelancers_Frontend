@@ -66,7 +66,7 @@ function ViewAllFre1elancers() {
             return (
               <div key={freelancer._id}>
                 <Col md={8}>
-                  <Card className="mb-3" style={{ maxWidth: "540px" }}>
+                  <Card className="m-3" style={{ maxWidth: "600px", width:"100%" }}>
                     <Row className="g-0">
                       <Col md={8}>
                         <Card.Body className="text-center">
@@ -97,7 +97,7 @@ function ViewAllFre1elancers() {
                       >
                         <Card.Img
                           src={profilePicUrl}
-                          className="img-fluid rounded-start"
+                          className="img-fluid rounded-start m-5"
                           alt="profile pic"
                         />
                       </Col>
