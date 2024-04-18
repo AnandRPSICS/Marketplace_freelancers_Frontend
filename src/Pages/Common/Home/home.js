@@ -6,7 +6,12 @@ import side_fig from "../../../Assets/side_fig.png";
 import beauty from "../../../Assets/Beauty.png";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
+import { useNavigate } from "react-router-dom";
 function Home(props) {
+  const navigate = useNavigate();
+  const redirectFreelancer = () => {
+    navigate("/freelancer");
+  };
   return (
     <>
       <Navbar />
@@ -27,13 +32,14 @@ function Home(props) {
           <i className="bi bi-gear-wide-connected mx-3"></i>
         </div>
         <div className="home-inner2 p-5 ">
-          <p className="m-3 p-3">Lost equipment? Found inspiration?</p>
+          <p className="m-3 p-3">"Empower your dreams. Freelance your future."</p>
           <p className="home-inner3 mt-4 p-3">
-            Join CONNECT, the trusted network for freelancing professionals
+            Join Marketplace CONNECT, the trusted network for freelancing professionals
           </p>
           <button
             className="btn btn-outline-info btn-lg px-5 py-4 m-5"
             id="btn1"
+            onClick={redirectFreelancer}
           >
             Connect Now <i className="bi bi-gear-wide-connected mx-3"></i>
           </button>
@@ -46,25 +52,23 @@ function Home(props) {
               className="ms-auto float-end"
             />
             <p className="home-banner-inner1 ">
-              Easily report lost or found items with a user-friendly platform,
-              including photos and detailed descriptions.
+            Welcome to the world of freelancing—a vibrant ecosystem where talent knows no boundaries and innovation knows no limits.
             </p>
           </div>
           <p className="home-banner-inner2 m-5 p-5">Simplified Reporting</p>
         </div>
         <div className="home-banner-targeted text-center p-5">
           <img src={laptop} alt="laptop" className="mx-auto p-5" />
-          <p className="home-targeted-search p-3">Targeted Search</p>
+          <p className="home-targeted-search p-3">Easy Payment</p>
           <p className="home-targeted-search-body p-3">
-            Find what you're looking for quickly with advanced filtering and
-            categorization based on project types, skills, and locations.
+          Experience seamless transactions with our easy payment feature, simplifying the process for hassle-free transactions.
           </p>
         </div>
         <div className="home-banner-inner m-5">
           <div className="home-banner-secure m-5">
             <p className="home-banner-secure-inner">Secure Communication</p>
             <p className="home-banner-secure-inner1">
-              Join CONNECT, the trusted network for freelancing professionals
+              Join Marketplace CONNECT, the trusted network for freelancing professionals
             </p>
           </div>
         </div>
@@ -79,7 +83,7 @@ function Home(props) {
                 </p>
                 <button
                   className="btn btn-outline-info btn-lg px-5 pt-3 my-3"
-                  id="btn2"
+                  id="btn2" onClick={redirectFreelancer}
                 >
                   GROW <i className="bi bi-gear-wide-connected mx-1"></i>
                 </button>
@@ -95,7 +99,7 @@ function Home(props) {
           </div>
         </div>
         <div className="home-banner-ipad text-center  m-4 ">
-          <button className="btn btn-info btn-lg " id="btn3">
+          <button className="btn btn-info btn-lg " id="btn3" onClick={redirectFreelancer}>
             CONNECT TO NETWORK{" "}
             <i className="bi bi-gear-wide-connected mx-3"></i>
           </button>
@@ -103,7 +107,7 @@ function Home(props) {
         <div className="home-banner-inner text-center p-4 m-5">
           <p className="home-banner-testimonial m-5">Testimonials</p>
           <p className="home-banner-quoteblock m-5">
-            " Connect restored my faith in the freelance community. My Code went
+            " Marketplace Connect restored my faith in the freelance community. My Code went
             missing after a shoot, and within days, a fellow Coder messaged me
             through the platform to return it! Amazing! "
           </p>
