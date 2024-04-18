@@ -17,6 +17,7 @@ import DetailedViewFreelancers from "./Pages/User/DetailedViewFreelancers/Detail
 import {ViewResponseDetails} from "./Pages/User/responseDetails/responseDetails.jsx";
 import User_Profile from "./Pages/User/User_Profile/User_Profile";
 import Admin_Dashboard from "./Pages/Admin/Admin_Dashboard/Admin_Dashboard.jsx";
+import Admin_ViewAllUsers from "./Pages/Admin/Admin_ViewAllUsers/Admin_ViewAllUsers.jsx";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
           <Route path="/admin-dashboard" element={<Admin_Dashboard  />}/>
+          <Route path="/admin-view-all-users" element={<Admin_ViewAllUsers />}/>
           <Route path="/testing" element={<Testing />} />
           <Route path="/*" element={<h1> Please re-check the Route </h1>} />
         </Routes>
