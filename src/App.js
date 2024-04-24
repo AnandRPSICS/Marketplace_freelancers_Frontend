@@ -34,15 +34,7 @@ function App() {
           <Route path="/user-login" element={<User_login />} />
           <Route path="/user-register" element={<User_register />} />
 
-          <Route path="/user-profile" element={<User_Profile />} />
-
-          <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
-          {/* <Route path='/detailed-view-freelancers' element={<DetailedViewFreelancers />} /> */}
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/payment-details" element={<Payment_Details />} />
-
-          <Route path="/freelancer" element={<ViewAllFreelancers />} />
-          <Route path="/freelancer/:id" element={<DetailedViewFreelancers />} />
+    
           {/* <Route path="" /> */}
 
           {/* Freelancer routes  */}
@@ -54,11 +46,7 @@ function App() {
        
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
-          <Route path="/admin-dashboard" element={<Admin_Dashboard  />}/>
-          <Route path="/admin-view-all-users" element={<Admin_ViewAllUsers />}/>
-          <Route path="/admin-view-all-freelancers" element={<Admin_ViewAllFreelancers />}/>
-          <Route path="/admin-view-all-requests" element={<Admin_ViewAllRequests />}/>
-          <Route path="/testing" element={<Testing />} />
+       
           <Route path="/*" element={<h1> Please re-check the Route </h1>} />
         </Routes>
       </BrowserRouter>
