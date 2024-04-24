@@ -33,14 +33,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/user-login" element={<User_login />} />
           <Route path="/user-register" element={<User_register />} />
-          <Route path="/user-request" element={<UserRequest />} />
-          <Route path="/user-myrequests" element={<MyRequests />} />
-          <Route path="/user-forgot-password" element={<Forgot_password />} />
-          <Route path="/view-responses/:id" element={<ViewResponseDetails />} />
-          <Route
-            path="/view-all-freelancers"
-            element={<ViewAllFreelancers />}
-          />
+
           <Route path="/user-profile" element={<User_Profile />} />
 
           <Route path="/view-all-freelancers" element={<ViewAllFreelancers />} />
@@ -58,9 +51,7 @@ function App() {
             path="/freelancer-register"
             element={<Freelancer_register />}
           />
-          <Route path="/freelancer-profile" element={<Freelancer_Profile/>} />
-          <Route path="/view-request" element={<ViewAllUsersRequests />} />
-          <Route path="/view-request/:id" element={<View_Request_Details />} />
+       
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
           <Route path="/admin-dashboard" element={<Admin_Dashboard  />}/>
