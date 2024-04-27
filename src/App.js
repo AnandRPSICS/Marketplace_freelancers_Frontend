@@ -45,7 +45,7 @@ function App() {
             path="/freelancer-register"
             element={<Freelancer_register />}
           />
-       
+          <Route path="/freelancer-profile" element={<Freelancer_Profile/>} />
           {/* Admin routes  */}
           <Route path="/admin" element={<Admin_login />} />
        
